@@ -1,54 +1,51 @@
 import React from "react";
 
-export default function Pagination({ filteredData, dataLimit }) {
-    const [pages] = React.useState(Math.round(filteredData?.length / dataLimit));
-    const [currentPage, setCurrentPage] = React.useState();
-    const pageNumbers = [];
+export default function Pagination(props) {
+    const {changePage, goToPreviousPage, goToNextPage, pageNumbers, currentPage} = props;
+    // const [pages, setPages] = React.useState(0);
 
-    for (let i = 1; i <= pages; i++) {
-        pageNumbers.push(i);
-    }
+    // React.useEffect(() => {
+    //     setPages(Math.round(filteredData?.length / dataLimit));
+    // },[filteredData])
+    // const [currentPage, setCurrentPage] = React.useState(1);
+    // const pageNumbers = [];
 
-    console.log(currentPage);
 
-    function goToNextPage() {
-        setCurrentPage((page) => page + 1);
-    }
+    // for (let i = 1; i <= pages; i++) {
+    //     pageNumbers.push(i);
+    // }
 
-    function goToPreviousPage() {
-        setCurrentPage((page) => page - 1);
-    }
+    // const goToNextPage = () => {
+    //     setCurrentPage((page) => page + 1);
+    // }
 
-    function changePage(event) {
-        const pageNumber = Number(event.target.textContent);
-        setCurrentPage(pageNumber);
-    }
+    // const goToPreviousPage = () => {
+    //     setCurrentPage((page) => page - 1);
+    // }
 
-    const getPaginatedData = () => {
-        const startIndex = currentPage * dataLimit - dataLimit;
-        const endIndex = startIndex + dataLimit;
-        return filteredData.slice(startIndex, endIndex);
-    };
+    // const changePage = (number) => {
+    //     const pageNumber = Number(number);
+    //     setCurrentPage(pageNumber);
+    // }
+
+    // const getPaginatedData = () => {
+    //     const startIndex = currentPage * dataLimit - dataLimit;
+    //     const endIndex = startIndex + dataLimit;
+    //     return filteredData.slice(startIndex, endIndex);
+    // };
 
 
     return (
         <div className='pagination'>
-            <button className="page-change-buttons">Prev</button>
-
-            <p className='page-num'>
-                1
-            </p>
-            <p className='page-num'>
-                2
-            </p>
+            <button className="page-change-buttons" disabled={currentPage === 1} onClick={goToPreviousPage}>Prev</button>
 
             {pageNumbers?.map((number) =>
-                <p key={number} onClick={() => changePage(number)} className='page-num'>
+                <button key={number} onClick={() => changePage(number)} className='page-num'>
                     {number}
-                </p>
+                </button>
             )}
 
-            <button className="page-change-buttons">Next</button>
+            <button className="page-change-buttons" disabled={currentPage === pageNumbers.length} onClick={goToNextPage}>Next</button>
         </div>
     )
 }
