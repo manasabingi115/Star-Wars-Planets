@@ -53,7 +53,6 @@ function App() {
 
   }
 
-
   if (selectedSort === "Name") {
     filteredData.sort(function (a, b) {
       if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
@@ -67,7 +66,6 @@ function App() {
   if (selectedSort === "Residents") {
     filteredData.sort((a, b) => (a.residents.length > b.residents.length) ? 1 : -1)
   }
-
 
   function handleChangeSelectMultiple(e) {
     var options = e.target.options;
@@ -87,9 +85,6 @@ const pages = Math.round(filteredData?.length / dataLimit);
 const [currentPage, setCurrentPage] = React.useState(1);
 const pageNumbers = [];
 
-console.log(pages);
-
-
 for (let i = 1; i <= pages; i++) {
     pageNumbers.push(i);
 }
@@ -107,22 +102,10 @@ const changePage = (number) => {
     setCurrentPage(pageNumber);
 }
 
-// const getPaginatedData = () => {
-//     const startIndex = currentPage * dataLimit - dataLimit;
-//     const endIndex = startIndex + dataLimit;
-//     return filteredData.slice(startIndex, endIndex);
-// };
-
 const startIndex = currentPage * dataLimit - dataLimit;
 const endIndex = startIndex + dataLimit;
 
 const paginatedData = filteredData.slice(startIndex, endIndex);
-
-console.log("start",startIndex);
-console.log("end",endIndex);
-console.log("data",paginatedData);
-
-
 
   return (
     <div className="App">
