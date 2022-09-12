@@ -88,6 +88,15 @@ ul {
 .page-change-buttons:hover{
     border: 2px solid black;
 }
+.pagination{
+    margin-bottom: 100px;
+}
+
+@media only screen and (max-width: 900px){
+    .filters-container {
+        padding: unset;
+    }
+}
 
 @media only screen and (max-width: 600px){
     .cards-parent-div{
