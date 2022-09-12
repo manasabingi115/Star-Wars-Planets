@@ -31,7 +31,7 @@ function App() {
 
   if (name) {
     filteredData = filteredData.filter((el) =>
-      el.name.toLowerCase().includes(name.toLowerCase())
+      el.name.toLowerCase().startsWith(name.toLowerCase())
     );
   }
 
