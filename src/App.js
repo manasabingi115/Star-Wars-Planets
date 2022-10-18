@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import Card from "./card";
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 
 function App() {
 
