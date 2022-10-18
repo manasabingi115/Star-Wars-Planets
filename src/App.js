@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import Card from "./Card";
+import Card from "./card";
 import Pagination from "./Pagination";
 
 function App() {
